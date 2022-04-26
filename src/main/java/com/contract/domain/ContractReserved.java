@@ -1,8 +1,14 @@
 package com.contract.domain;
 
+import javax.persistence.*;
+
 import com.contract.AbstractEvent;
 
+@Entity
 public class ContractReserved extends AbstractEvent {
+
+    @Id
+    @GeneratedValue
     Long id;
     public Long getId() {
         return id;
