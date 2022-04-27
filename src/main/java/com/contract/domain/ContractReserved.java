@@ -9,7 +9,7 @@ import com.contract.AbstractEvent;
 public class ContractReserved extends AbstractEvent {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     public Long getId() {
         return id;
