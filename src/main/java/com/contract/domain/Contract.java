@@ -15,7 +15,7 @@ public class Contract {
 	int price;
 	String Requirement;
 
-	@Id @GeneratedValue
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 
 	public String getTalentCategory() {
