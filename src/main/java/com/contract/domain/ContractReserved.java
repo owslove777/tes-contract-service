@@ -5,6 +5,7 @@ import javax.persistence.*;
 import com.contract.AbstractEvent;
 
 @Entity
+@Table(name = "contract_reserved")
 public class ContractReserved extends AbstractEvent {
 
     @Id
