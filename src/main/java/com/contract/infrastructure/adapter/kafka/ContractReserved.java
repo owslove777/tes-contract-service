@@ -1,8 +1,8 @@
-package com.contract.domain;
+package com.contract.infrastructure.adapter.kafka;
 
 import javax.persistence.*;
 
-import com.contract.AbstractEvent;
+import com.contract.infrastructure.adapter.kafka.AbstractEvent;
 
 @Entity
 @Table(name = "contract_reserved")

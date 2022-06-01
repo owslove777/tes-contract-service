@@ -1,10 +1,7 @@
 package com.contract;
 
-import com.contract.domain.Contract;
-import com.contract.domain.Location;
-import com.contract.domain.ContractRepository;
-import com.contract.kafka.KafkaProcessor;
-
+import com.contract.infrastructure.adapter.kafka.KafkaProcessor;
+import com.contract.infrastructure.repository.ContractRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
@@ -26,14 +23,6 @@ public class ContractApplication {
 		applicationContext = SpringApplication.run(ContractApplication.class, args);
 
 		ContractRepository repository = applicationContext.getBean(ContractRepository.class);
-
-		Contract contract = new Contract();
-		contract.setLocation(Location.판교);
-
-		repository.save(contract);
-
-		System.out.println(contract.getLocation());
-
 
 	}
 

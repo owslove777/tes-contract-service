@@ -1,7 +1,6 @@
-package com.contract;
+package com.contract.infrastructure.adapter.kafka;
 
-import com.contract.kafka.KafkaProcessor;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.contract.infrastructure.adapter.kafka.KafkaProcessor;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;

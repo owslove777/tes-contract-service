@@ -1,0 +1,5 @@
+package com.contract.domain.enums;
+
+public enum CONTRACT_STATUS {
+    BEFORE_CONTRACT, ACCEPT_REQUESTED, ACCEPTED, REJECTED, PERFORMED, CANCELED
+}

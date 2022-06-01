@@ -1,6 +1,6 @@
-package com.contract;
+package com.contract.infrastructure.adapter.kafka;
 
-import com.contract.kafka.KafkaProcessor;
+import com.contract.ContractApplication;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -42,7 +42,7 @@ public class AbstractEvent {
             /**
              * spring streams 방식
              */
-            KafkaProcessor processor = ContractApplication.applicationContext.getBean(KafkaProcessor.class);
+            KafkaProcessor processor = ContractApplication.getApplicationContext().getBean(KafkaProcessor.class);
             MessageChannel outputChannel = processor.outboundTopic();
 
             outputChannel.send(MessageBuilder
