@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class ContractServiceImpl implements ContractServicePort{
+public class ContractServiceImpl implements ContractServicePort {
 
     private final ContractPersistencePort contractPersistence;
 
@@ -25,7 +25,8 @@ public class ContractServiceImpl implements ContractServicePort{
 
     @Override
     public ContractDto save(ContractDto src) {
-        return contractPersistence.save(src);
+        ContractDto saved = contractPersistence.save(src);
+        return saved;
     }
 
     @Override

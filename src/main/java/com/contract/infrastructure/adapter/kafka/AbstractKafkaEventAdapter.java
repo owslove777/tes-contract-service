@@ -1,6 +1,7 @@
 package com.contract.infrastructure.adapter.kafka;
 
 import com.contract.ContractApplication;
+import com.contract.domain.ports.spi.ContractMessagePort;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -11,12 +12,12 @@ import org.springframework.transaction.support.TransactionSynchronizationAdapter
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.util.MimeTypeUtils;
 
-public class AbstractEvent {
+public class AbstractKafkaEventAdapter implements ContractMessagePort {
 
     String eventType;
     Long timestamp;
 
-    public AbstractEvent(){
+    public AbstractKafkaEventAdapter(){
         this.setEventType(this.getClass().getSimpleName());
         // SimpleDateFormat defaultSimpleDateFormat = new SimpleDateFormat("YYYYMMddHHmmss");
         // this.timestamp = defaultSimpleDateFormat.format(new Date());
@@ -62,7 +63,7 @@ public class AbstractEvent {
 
             @Override
             public void afterCompletion(int status) {
-                AbstractEvent.this.publish();
+                AbstractKafkaEventAdapter.this.publish();
             }
         });
     }

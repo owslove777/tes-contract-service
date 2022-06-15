@@ -2,6 +2,8 @@ package com.contract.infrastructure.entity;
 
 import com.contract.domain.data.ContractDto;
 import com.contract.domain.enums.CONTRACT_STATUS;
+import com.contract.infrastructure.adapter.kafka.ContractReservedKafka;
+import com.contract.infrastructure.adapter.kafka.ContractUpdated;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -85,5 +87,21 @@ public class Contract {
 				.performedDateTime(performedDateTime)
 				.canceledDateTime(canceledDateTime)
 				.build();
+	}
+
+	@PostPersist
+	public void onPostPersist(){
+		ContractReservedKafka contractReserved = ContractReservedKafka.builder()
+				.contractDto(toDto())
+				.build();
+		contractReserved.publishAfterCommit();
+	}
+
+	@PostUpdate
+	public void onPostUpdate(){
+		ContractUpdated contractReserved = ContractUpdated.builder()
+				.contractDto(toDto())
+				.build();
+		contractReserved.publishAfterCommit();
 	}
 }
