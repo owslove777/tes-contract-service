@@ -5,9 +5,9 @@ import lombok.*;
 
 @Setter
 @Getter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ContractReservedKafka extends AbstractKafkaEventAdapter {
     private ContractDto contractDto;
 }
