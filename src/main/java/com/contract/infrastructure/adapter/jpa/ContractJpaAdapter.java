@@ -30,6 +30,18 @@ public class ContractJpaAdapter implements ContractPersistencePort {
     }
 
     @Override
+    public List<ContractDto> findByUserId(Long userId) {
+        List<Contract> list = repository.findByUserIdOrderByRequestDateTimeDesc(userId);
+        return list.stream().map(Contract::toDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ContractDto> findByTalentUserId(Long talentUserId) {
+        List<Contract> list = repository.findByTalentUserIdOrderByRequestDateTimeDesc(talentUserId);
+        return list.stream().map(Contract::toDto).collect(Collectors.toList());
+    }
+
+    @Override
     public ContractDto save(ContractDto src) {
         Contract saved = repository.save(Contract.parseFrom(src));
         return saved.toDto();

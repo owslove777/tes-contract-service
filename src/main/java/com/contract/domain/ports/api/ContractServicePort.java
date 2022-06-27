@@ -10,9 +10,13 @@ public interface ContractServicePort {
 
     ContractDto findById(Long id);
 
+    List<ContractDto> findByTalentUserId(Long talentUserId);
+
     ContractDto save(ContractDto src);
 
     Boolean deleteById(Long id);
 
     ContractDto update(Long id, CONTRACT_STATUS state);
+
+    List<ContractDto> findByUserId(Long userId);
 }

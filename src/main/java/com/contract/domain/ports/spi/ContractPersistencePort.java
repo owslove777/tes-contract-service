@@ -9,7 +9,11 @@ public interface ContractPersistencePort {
 
     ContractDto findById(Long id);
 
+    List<ContractDto> findByTalentUserId(Long talentUserId);
+
     ContractDto save(ContractDto src);
 
     Boolean deleteById(Long id);
+
+    List<ContractDto> findByUserId(Long userId);
 }

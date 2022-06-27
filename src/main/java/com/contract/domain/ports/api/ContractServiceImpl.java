@@ -24,6 +24,16 @@ public class ContractServiceImpl implements ContractServicePort {
     }
 
     @Override
+    public List<ContractDto> findByUserId(Long userId) {
+        return contractPersistence.findByUserId(userId);
+    }
+
+    @Override
+    public List<ContractDto> findByTalentUserId(Long talentUserId) {
+        return contractPersistence.findByTalentUserId(talentUserId);
+    }
+
+    @Override
     public ContractDto save(ContractDto src) {
         ContractDto saved = contractPersistence.save(src);
         return saved;

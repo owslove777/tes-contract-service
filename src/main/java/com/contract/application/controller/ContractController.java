@@ -33,6 +33,15 @@ public class ContractController {
         return contractService.findById(id);
     }
 
+    @GetMapping("/contracts/user/{id}")
+    public List<ContractDto> findByUserId(@PathVariable(name = "id") Long userId) {
+        return contractService.findByUserId(userId);
+    }
+
+    @GetMapping("/contracts/talent-user/{id}")
+    public List<ContractDto> findByTalentUserId(@PathVariable(name = "id") Long talentUserId) {
+        return contractService.findByTalentUserId(talentUserId);
+    }
 
     /**
      * 신규 계약 생성
