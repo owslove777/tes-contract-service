@@ -2,6 +2,7 @@ package com.contract.domain.ports.api;
 
 import com.contract.domain.data.ContractDto;
 import com.contract.domain.enums.CONTRACT_STATUS;
+import com.contract.infrastructure.adapter.kafka.vo.PaymentApprovedVo;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface ContractServicePort {
     ContractDto update(Long id, CONTRACT_STATUS state);
 
     List<ContractDto> findByUserId(Long userId);
+
+    ContractDto updateContractApproved(PaymentApprovedVo paymentApprovedVo);
 }

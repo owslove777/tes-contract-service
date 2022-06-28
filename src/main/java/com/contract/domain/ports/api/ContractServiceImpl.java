@@ -3,6 +3,7 @@ package com.contract.domain.ports.api;
 import com.contract.domain.data.ContractDto;
 import com.contract.domain.enums.CONTRACT_STATUS;
 import com.contract.domain.ports.spi.ContractPersistencePort;
+import com.contract.infrastructure.adapter.kafka.vo.PaymentApprovedVo;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -26,6 +27,20 @@ public class ContractServiceImpl implements ContractServicePort {
     @Override
     public List<ContractDto> findByUserId(Long userId) {
         return contractPersistence.findByUserId(userId);
+    }
+
+    @Override
+    public ContractDto updateContractApproved(PaymentApprovedVo paymentApprovedVo) {
+        ContractDto dto = findById(paymentApprovedVo.getContractId());
+        if (dto == null) {
+            return null;
+        }
+        if (CONTRACT_STATUS.PAID.equals(dto.getContractStatus())) {
+            return null;
+        }
+        dto.setContractStatus(CONTRACT_STATUS.PAID);
+
+        return save(dto);
     }
 
     @Override
