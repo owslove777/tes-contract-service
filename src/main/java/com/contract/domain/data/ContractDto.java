@@ -16,33 +16,35 @@ import java.time.LocalDateTime;
 @Builder
 public class ContractDto {
 
-	Long id;
-	Long talentId;
-	Long talentItemId;
-	Long talentUserId;
-	String talentUserNm;
-	Long userId;
-	String userNm;
-	CONTRACT_STATUS contractStatus; // BEFORE_CONTRACT, ACCEPT_REQUESTED, ACCEPTED, REJECTED, PERFORMED, NOT_PERFORMED
+	private Long id;
+	private Long talentId;
+	private Long talentItemId;
+	private Long talentUserId;
+	private String talentUserNm;
+	private Long userId;
+	private String userNm;
+	private String title;
+	private Long price;
+	private CONTRACT_STATUS contractStatus; // BEFORE_CONTRACT, ACCEPT_REQUESTED, ACCEPTED, REJECTED, PERFORMED, NOT_PERFORMED
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-	LocalDateTime requestDateTime;
+	private LocalDateTime requestDateTime;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-	LocalDateTime acceptedDateTime;
+	private LocalDateTime acceptedDateTime;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-	LocalDateTime rejectedDateTime;
+	private LocalDateTime rejectedDateTime;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-	LocalDateTime performedDateTime;
+	private LocalDateTime performedDateTime;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-	LocalDateTime canceledDateTime;
+	private LocalDateTime canceledDateTime;
 
 }

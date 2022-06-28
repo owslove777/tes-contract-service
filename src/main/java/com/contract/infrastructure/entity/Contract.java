@@ -29,6 +29,8 @@ public class Contract {
 	private String talentUserNm;
 	private Long userId;
 	private String userNm;
+	private String title;
+	private Long price;
 
 	@Enumerated(EnumType.STRING)
 	private CONTRACT_STATUS contractStatus; // ACCEPT_REQUESTED, ACCEPTED, PAID, REJECTED, PERFORMED, CANCELED
@@ -68,6 +70,8 @@ public class Contract {
 				.acceptedDateTime(src.getAcceptedDateTime())
 				.performedDateTime(src.getPerformedDateTime())
 				.canceledDateTime(src.getCanceledDateTime())
+				.price(src.getPrice())
+				.title(src.getTitle())
 				.build();
 	}
 
@@ -86,6 +90,8 @@ public class Contract {
 				.acceptedDateTime(acceptedDateTime)
 				.performedDateTime(performedDateTime)
 				.canceledDateTime(canceledDateTime)
+				.price(price)
+				.title(title)
 				.build();
 	}
 
