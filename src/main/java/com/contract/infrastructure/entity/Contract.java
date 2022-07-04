@@ -31,6 +31,7 @@ public class Contract {
 	private String userNm;
 	private String title;
 	private Long price;
+	private String address;
 
 	@Enumerated(EnumType.STRING)
 	private CONTRACT_STATUS contractStatus; // ACCEPT_REQUESTED, ACCEPTED, PAID, REJECTED, PERFORMED, CANCELED
@@ -72,6 +73,7 @@ public class Contract {
 				.canceledDateTime(src.getCanceledDateTime())
 				.price(src.getPrice())
 				.title(src.getTitle())
+				.address(src.getAddress())
 				.build();
 	}
 
@@ -92,6 +94,7 @@ public class Contract {
 				.canceledDateTime(canceledDateTime)
 				.price(price)
 				.title(title)
+				.address(address)
 				.build();
 	}
 
