@@ -1,6 +1,6 @@
 package com.contract.infrastructure.adapter.kafka;
 
-import com.contract.domain.data.ContractDto;
+import com.contract.infrastructure.adapter.kafka.vo.ContractKafkaDto;
 import lombok.*;
 
 @Setter
@@ -9,5 +9,5 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class ContractReservedKafka extends AbstractKafkaEventAdapter {
-    private ContractDto contractDto;
+    private ContractKafkaDto contractDto;
 }
