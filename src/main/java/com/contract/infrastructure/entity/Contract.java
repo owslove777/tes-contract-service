@@ -4,6 +4,7 @@ import com.contract.domain.data.ContractDto;
 import com.contract.domain.enums.CONTRACT_STATUS;
 import com.contract.infrastructure.adapter.kafka.ContractReservedKafka;
 import com.contract.infrastructure.adapter.kafka.ContractUpdated;
+import com.contract.infrastructure.adapter.kafka.vo.ContractKafkaDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -98,10 +99,26 @@ public class Contract {
 				.build();
 	}
 
+	public ContractKafkaDto toKafkaDto() {
+		return ContractKafkaDto.builder()
+				.id(id)
+				.talentId(talentId)
+				.talentItemId(talentItemId)
+				.talentUserId(talentUserId)
+				.talentUserNm(talentUserNm)
+				.userId(userId)
+				.userNm(userNm)
+				.contractStatus(contractStatus)
+				.price(price)
+				.title(title)
+				.address(address)
+				.build();
+	}
+
 	@PostPersist
 	public void onPostPersist(){
 		ContractReservedKafka contractReserved = ContractReservedKafka.builder()
-				.contractDto(toDto())
+				.contractDto(toKafkaDto())
 				.build();
 		contractReserved.publishAfterCommit();
 	}
@@ -109,7 +126,7 @@ public class Contract {
 	@PostUpdate
 	public void onPostUpdate(){
 		ContractUpdated contractReserved = ContractUpdated.builder()
-				.contractDto(toDto())
+				.contractDto(toKafkaDto())
 				.build();
 		contractReserved.publishAfterCommit();
 	}
