@@ -1,7 +1,15 @@
 package com.contract.infrastructure.adapter.kafka.vo;
 
 import com.contract.domain.enums.CONTRACT_STATUS;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class ContractKafkaDto {
     private Long id;
     private Long talentId;
