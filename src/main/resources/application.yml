@@ -43,6 +43,3 @@ logging:
   level:
     org.apache.kafka: info
     org.springframework.kafka.listener: info
-
-server:
-  port: 8888
