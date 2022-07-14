@@ -60,6 +60,11 @@ public class ContractServiceImpl implements ContractServicePort {
     }
 
     @Override
+    public Boolean deleteByTalentItemId(Long id) {
+        return contractPersistence.deleteByTalentItemId(id);
+    }
+
+    @Override
     public ContractDto update(Long id, CONTRACT_STATUS state) {
         ContractDto dto = findById(id);
         dto.setContractStatus(state);

@@ -17,6 +17,8 @@ public interface ContractServicePort {
 
     Boolean deleteById(Long id);
 
+    Boolean deleteByTalentItemId(Long id);
+
     ContractDto update(Long id, CONTRACT_STATUS state);
 
     List<ContractDto> findByUserId(Long userId);

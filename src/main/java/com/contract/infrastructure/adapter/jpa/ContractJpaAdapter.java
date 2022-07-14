@@ -52,4 +52,10 @@ public class ContractJpaAdapter implements ContractPersistencePort {
         repository.deleteById(id);
         return true;
     }
+
+    @Override
+    public Boolean deleteByTalentItemId(Long id) {
+        repository.deleteByTalentItemId(id);
+        return true;
+    }
 }

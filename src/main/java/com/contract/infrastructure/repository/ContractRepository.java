@@ -9,4 +9,6 @@ public interface ContractRepository extends JpaRepository<Contract, Long>{
 
     List<Contract> findByUserIdOrderByRequestDateTimeDesc(Long userId);
     List<Contract> findByTalentUserIdOrderByRequestDateTimeDesc(Long talentUserId);
+
+    void deleteByTalentItemId(Long id);
 }

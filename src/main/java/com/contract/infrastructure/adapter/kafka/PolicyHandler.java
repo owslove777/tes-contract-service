@@ -2,7 +2,9 @@ package com.contract.infrastructure.adapter.kafka;
 
 import com.contract.domain.data.ContractDto;
 import com.contract.domain.ports.api.ContractServicePort;
+import com.contract.infrastructure.adapter.kafka.vo.ContractKafkaDto;
 import com.contract.infrastructure.adapter.kafka.vo.PaymentApprovedVo;
+import com.contract.infrastructure.adapter.kafka.vo.TalentItemContractFailedVo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +36,12 @@ public class PolicyHandler {
             PaymentApprovedVo paymentApprovedVo = parseToClass(eventString, PaymentApprovedVo.class);
 //            mypageService.createUserFromMessage(userCreatedVo);
             ContractDto contractDto = contractService.updateContractApproved(paymentApprovedVo);
+            break;
+        case "TalentItemContractFailed":
+            log.info("## 계약 실패");
+            TalentItemContractFailedVo vo = parseToClass(eventString, TalentItemContractFailedVo.class);
+            Long talentItemId = vo.getContractDto().getTalentItemId();
+            contractService.deleteByTalentItemId(talentItemId);
             break;
         default:
             break;

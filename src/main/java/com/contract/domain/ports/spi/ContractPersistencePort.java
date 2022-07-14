@@ -16,4 +16,6 @@ public interface ContractPersistencePort {
     Boolean deleteById(Long id);
 
     List<ContractDto> findByUserId(Long userId);
+
+    Boolean deleteByTalentItemId(Long id);
 }
